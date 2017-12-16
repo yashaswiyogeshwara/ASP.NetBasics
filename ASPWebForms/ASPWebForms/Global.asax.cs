@@ -17,6 +17,8 @@ namespace ASPWebForms
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterOpenAuth();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            Application["NoOfApplications"] = 1;
+            Application["NoOfSessions"] = 0;
         }
 
         void Application_End(object sender, EventArgs e)
@@ -29,6 +31,16 @@ namespace ASPWebForms
         {
             // Code that runs when an unhandled error occurs
 
+        }
+
+        void Session_Start()
+        {
+            Application["NoOfSessions"] = (int) Application["NoOfSessions"] + 1;
+        }
+
+        void Session_End()
+        {
+            Application["NoOfSessions"] = (int)Application["NoOfSessions"] - 1;
         }
     }
 }

@@ -11,7 +11,9 @@ namespace ASPWebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Response.Write("No Of Applications " + Application["NoOfApplications"]);
+            Response.Write("<br/>");
+            Response.Write("No Of Sessions " + Application["NoOfSessions"]);
         }
     }
 }
